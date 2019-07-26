@@ -1,7 +1,6 @@
 const express = require('express');
 const massive = require('massive');
 
-
 const users = require('./controllers/user.js');
 
 const PORT = 3000;
@@ -21,7 +20,9 @@ massive({
   app.use(express.json());
 
   //ROUTING USERS
-  app.post('/api/register', users.create);
+  app.post('/api/register', users.register);
+  app.get('/api/protected/data', users.protected);
+  app.post('/api/login', users.login);
 
   const PORT = 3000;
   app.listen(PORT, () => {
